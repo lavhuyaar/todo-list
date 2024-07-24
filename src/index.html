@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="title">Lav'ly Todo List</div>
+      <h1 class="title">Lav'ly Todo List</h1>
     </header>
     <div class="container">
-        <div class="sidebar">
-                <button class="create-task-btn">Add Task</button>
-                <button class="view-tasks">View Tasks</button>
-                <button class="create-project-btn">Add Project</button>
-                <div class="projects">
-                    <div class="project default-project">Default</div>
-                </div>
+      <div class="sidebar">
+        <div class="button-list">
+          <button class="create-task-btn">Add Task</button>
+          <button class="view-tasks">View Tasks</button>
+          <button class="create-project-btn">Add Project</button>
         </div>
-        <div class="content">
-            
+        <div class="projects">
+          <h3>Projects</h3>
+          <div class="projects-grid">
+            <div class="project default-project">Default</div>
+          </div>
         </div>
+      </div>
+      <div class="content"></div>
     </div>
-    
-</body>
+  </body>
 </html>

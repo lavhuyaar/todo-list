@@ -17,7 +17,7 @@ header {
     background-color: bisque;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1.3rem;
 
 }
 
@@ -36,8 +36,19 @@ header {
 }
 
 .projects {
+    display: flex;
+    flex-direction: column;
+}
+
+.projects-grid {
     display: grid;
     grid-template-columns: 1fr;
+}
+
+.button-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
 }
 
 button {
