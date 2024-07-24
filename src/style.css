@@ -77,3 +77,13 @@ button {
     width: 500px;
     background-color: red;
 }
+
+.task-list {
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    width: 85%;
+
+}

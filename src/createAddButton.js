@@ -1,7 +1,9 @@
 import { createTask } from "./createTask";
-import { tasks } from "./viewAllTasks";
+import { tasks, viewAllTasks } from "./viewAllTasks";
 
 export function createAddButton() {
+  const content = document.querySelector('.content');
+
   const ADD_BTN = document.createElement("button");
   ADD_BTN.textContent = `Add Task`;
   ADD_BTN.className = `add-btn`;
@@ -20,6 +22,11 @@ export function createAddButton() {
 
     const taskPage = document.querySelector(".task-page");
     taskPage.style.display = "none";
+
+    if(content.querySelector('div[class="task-list"')) {
+      viewAllTasks();
+    }
+
   });
   return ADD_BTN;
 }

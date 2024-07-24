@@ -2,6 +2,7 @@ import "./style.css";
 import { addTasks } from "./taskForm.js";
 import { viewAllTasks } from "./viewAllTasks.js";
 
+
 const projects = [];
 
 const addTaskBtn = document.querySelector('.add-task-btn');
