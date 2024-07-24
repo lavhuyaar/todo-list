@@ -55,3 +55,25 @@ button {
     width: 100px;
     height: 20px;
 }
+
+.task-page {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: absolute;
+}
+
+.task-menu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.task-form {
+    height: 500px;
+    width: 500px;
+    background-color: red;
+}

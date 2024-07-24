@@ -1,3 +1,10 @@
 import "./style.css";
+import { addTasks } from "./taskForm.js";
 
-console.log("Hello");
+const tasks = [];
+const projects = [];
+
+const addTaskBtn = document.querySelector('.add-task-btn');
+addTaskBtn.addEventListener('click', ()=> {
+    addTasks();
+});
