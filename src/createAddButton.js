@@ -1,5 +1,5 @@
 import { createTask } from "./createTask";
-const tasks = [];
+import { tasks } from "./viewAllTasks";
 
 export function createAddButton() {
   const ADD_BTN = document.createElement("button");
