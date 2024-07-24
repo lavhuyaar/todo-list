@@ -14,7 +14,16 @@ export function viewAllTasks() {
         const titleP = document.createElement('p');
         titleP.textContent = tasks[i].title;
 
-        card.append(titleP, indexNum + 1);
+        const removeBtn = document.createElement('button');
+        removeBtn.classList = `remove-btn`;
+        removeBtn.textContent = `Remove`;
+        removeBtn.addEventListener('click', ()=> {
+            content.removeChild(card);
+            tasks.splice(indexNum, 1);
+            console.warn(tasks);
+        })
+
+        card.append(titleP, indexNum + 1, removeBtn);
 
     }
 
