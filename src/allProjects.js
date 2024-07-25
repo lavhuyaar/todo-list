@@ -1,5 +1,6 @@
 import { createProject } from "./createProject";
 import { createTask } from "./createTask";
+import { projectDisplay } from "./projectDisplay";
 
 export const projects = [
   {
@@ -17,6 +18,7 @@ export const projects = [
 export function allProjects() {
   const content = document.querySelector(".content");
   content.innerHTML = ``;
+
 
   //Sidebar
   projects.push(createProject(document.querySelector("#project-name").value));
@@ -36,6 +38,8 @@ export function allProjects() {
    
     project.append( createDeleteButton(indexNum, projectGrid, project));
   }
+
+  projectDisplay();
 }
 
 export function createDeleteButton(indexNum, projectGrid, project) {
