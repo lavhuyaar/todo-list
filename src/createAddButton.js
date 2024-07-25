@@ -1,7 +1,6 @@
 import { createTask } from "./createTask";
 import { viewAllTasks } from "./viewAllTasks";
-import { projects } from "./allProjects";
-
+import {projects } from "./allProjects";
 
 
 export function createAddButton() {
@@ -40,10 +39,6 @@ function addButton(button) {
     const taskPage = document.querySelector(".task-page");
     taskPage.style.display = "none";
 
-    const content = document.querySelector('.content');
-    if(content.querySelector('div[class="task-list"')) {
-      viewAllTasks();
-    }
-
+    viewAllTasks();
   });
 }

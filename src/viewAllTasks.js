@@ -1,16 +1,23 @@
 import { projects } from "./allProjects";
 
-// export const tasks = [];
-
 export function viewAllTasks() {
   const content = document.querySelector(".content");
   content.innerHTML = ``;
 
   const tasksList = document.createElement("div");
   tasksList.className = `task-list`;
-  content.append(tasksList);
 
+  const tasksHeading = document.createElement('h2');
+  tasksHeading.className = 'tasks-heading';
+  tasksHeading.textContent = `All Tasks`;
+
+
+  content.append(tasksHeading, tasksList);
+
+  
   task(tasksList);
+
+
 }
 
 function task(tasksList) {
@@ -23,10 +30,6 @@ function task(tasksList) {
       card.textContent = projects[i].tasks[j].title;
 
       tasksList.append(card);
-
-      // const titleP = document.createElement('p');
-      // const projectTask = projects[i].tasks;
-      // titleP.textContent = projectTask.title;
 
       const removeBtn = document.createElement("button");
       removeBtn.classList = `remove-btn`;
