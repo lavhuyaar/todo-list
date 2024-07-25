@@ -1,3 +1,6 @@
+import { projects } from "./allProjects";
+
+
 export function createTitle() {
   const titleDiv = document.createElement("div");
   const titleInput = document.createElement("input");
@@ -38,4 +41,17 @@ export function createDueDate() {
   dueDateDiv.append(dueDateLabel, dueDateInput);
 
   return dueDateDiv;
+}
+
+export function createOption() {
+
+  const select = document.createElement('select');
+
+    for(let i = 0; i < projects.length; i++) {
+      const option = document.createElement('option');
+      option.textContent = projects[i].name;
+      option.value = projects[i].name;
+      select.add(option);
+    }
+  return select;
 }

@@ -3,9 +3,6 @@ import { addTasks } from "./taskForm.js";
 import { viewAllTasks } from "./viewAllTasks.js";
 import { createNewProject } from "./createNewProject.js";
 
-
-const projects = [];
-
 const addTaskBtn = document.querySelector('.add-task-btn');
 addTaskBtn.addEventListener('click', ()=> {
     addTasks();
@@ -20,5 +17,3 @@ const createNewProjectBtn = document.querySelector('.create-project-btn');
 createNewProjectBtn.addEventListener('click', ()=> {
     createNewProject();
 })
-
-
