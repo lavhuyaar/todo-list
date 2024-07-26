@@ -15,7 +15,7 @@ export function createAddButton() {
 
 function addButton(button) {
   button.addEventListener("click", () => {
-    const select = document.querySelector("select");
+    const select = document.querySelector("#project-options");
 
     console.log(select.value);
 

@@ -1,5 +1,9 @@
 import { projects } from "./allProjects";
+import { createEditOKButton } from "./createEditOKButton";
+import { createTitle, createCloseBtn, createDescription, createDueDate, createPriority } from "./createTaskFormElements";
 import Icon from './icons/delete-btn.png';
+import { priorities } from "./priorities";
+import { viewAllTasks } from "./viewAllTasks";
 
 
 export function projectDisplay() {
@@ -16,7 +20,8 @@ export function projectDisplay() {
 
       content.append(projectHeading, projectContent);
 
-      console.warn("log", project.textContent.split("Delete")[0]);
+      console.warn(projects);
+
 
       for (let i = 0; i < projects.length; i++) {
         if (project.textContent.split("Delete")[0] === projects[i].name) {
@@ -53,13 +58,16 @@ export function projectDisplay() {
             const projectCardDueDate = document.createElement("p");
             projectCardDueDate.textContent = `Due Date - ${projects[i].tasks[j].dueDate}`;
 
+            const projectCardBtn = createEditBtn(i, j);
+
             projectCard.append(
               projectCardTitle,
               projectCardDescription,
               projectCardDueDate,
               projectCardPriority,
-              removeProjectTask(i, indexNum, projectCard),
-              showMore(projectCardDescription, projectCardPriority)
+              projectCardBtn,
+              showMore(projectCardDescription, projectCardPriority, projectCardBtn),
+              removeProjectTask(i, indexNum, projectCard)
             );
 
             projectContent.append(projectCard);
@@ -68,6 +76,55 @@ export function projectDisplay() {
       }
     });
   });
+}
+
+
+function createEditBtn(i, j) {
+  const editBtn = document.createElement('button');
+  editBtn.className = `edit-btn`;
+  editBtn.textContent = `Edit`;
+  editBtn.style.display = 'none';
+
+  editBtn.addEventListener('click', ()=> {
+    console.log('click');
+
+    const editPage = document.querySelector('.edit-page');
+    editPage.innerHTML = ``;
+    editPage.style.display = 'block';
+    const editMenu = document.createElement('div');
+    editMenu.className = `edit-menu`;
+    const editForm = document.createElement('div');
+    editForm.className = `edit-form`;
+
+    editPage.append(editMenu);
+
+    editMenu.append(editForm);
+
+    editForm.append(createTitle(), createDescription(), createDueDate(), createPriority(priorities),createEditOKButton(i, j), createCloseBtn() );
+  })
+
+  return editBtn;
+}
+
+function showMore(description, priority, button) {
+  const showMoreBtn = document.createElement("button");
+  showMoreBtn.className = `show-more-btn`;
+  showMoreBtn.textContent = `Show More`;
+
+  showMoreBtn.addEventListener("click", () => {
+    if (showMoreBtn.textContent === `Show More`) {
+      description.style.display = "block";
+      priority.style.display = 'block';
+      button.style.display = 'block';
+      showMoreBtn.textContent = `Show Less`;
+    } else if (showMoreBtn.textContent === `Show Less`) {
+      description.style.display = "none";
+      priority.style.display = 'none';
+      button.style.display = 'none';
+      showMoreBtn.textContent = `Show More`;
+    }
+  });
+  return showMoreBtn;
 }
 
 function removeProjectTask(i, num, card) {
@@ -81,25 +138,8 @@ function removeProjectTask(i, num, card) {
     projectContent.removeChild(card);
     projects[i].tasks.splice(num, 1);
     console.warn(projects);
+
+    viewAllTasks();
   });
   return removeProjectTaskBtn;
-}
-
-function showMore(description, priority) {
-  const showMoreBtn = document.createElement("button");
-  showMoreBtn.className = `show-more-btn`;
-  showMoreBtn.textContent = `Show More`;
-
-  showMoreBtn.addEventListener("click", () => {
-    if (showMoreBtn.textContent === `Show More`) {
-      description.style.display = "block";
-      priority.style.display = `block`;
-      showMoreBtn.textContent = `Show Less`;
-    } else if (showMoreBtn.textContent === `Show Less`) {
-      description.style.display = "none";
-      priority.style.display = 'none';
-      showMoreBtn.textContent = `Show More`;
-    }
-  });
-  return showMoreBtn;
 }
