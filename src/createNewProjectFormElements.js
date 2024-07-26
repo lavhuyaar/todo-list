@@ -12,3 +12,17 @@ export function createProjectNameInput() {
 
   return projectNameDiv;
 }
+
+export function createCloseBtn() {
+  const closeBtn = document.createElement('button');
+  closeBtn.textContent = `Close`;
+  closeBtn.className = 'close-btn';
+
+  closeBtn.addEventListener('click', ()=> {
+
+    const projectPage = document.querySelector('.project-page');
+    projectPage.style.display = 'none';
+  })
+
+  return closeBtn;
+}

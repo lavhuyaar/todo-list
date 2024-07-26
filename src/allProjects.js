@@ -1,6 +1,6 @@
 import { createProject } from "./createProject";
-import { createTask } from "./createTask";
 import { projectDisplay } from "./projectDisplay";
+import Icon from './icons/delete-btn.png';
 
 export const projects = [
   {
@@ -36,15 +36,18 @@ export function allProjects() {
     projectGrid.append(project);
 
    
-    project.append( createDeleteButton(indexNum, projectGrid, project));
+    project.append( createDeleteButton(indexNum, project));
   }
 
   projectDisplay();
 }
 
-export function createDeleteButton(indexNum, projectGrid, project) {
+export function createDeleteButton(indexNum, project) {
+
+  const projectGrid = document.querySelector(".projects-grid");
+  
   const deleteProjectBtn = document.createElement("button");
-    deleteProjectBtn.textContent = `Delete`;
+    deleteProjectBtn.innerHTML = `<img src = ${Icon} alt="delete" width="15px"/>`;
     deleteProjectBtn.className = `delete-project-btn`;
 
       deleteProjectBtn.addEventListener("click", () => {

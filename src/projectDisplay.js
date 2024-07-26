@@ -1,4 +1,6 @@
 import { projects } from "./allProjects";
+import Icon from './icons/delete-btn.png';
+
 
 export function projectDisplay() {
   document.querySelectorAll(".project").forEach((project) => {
@@ -6,10 +8,10 @@ export function projectDisplay() {
       const content = document.querySelector(".content");
       content.innerHTML = ``;
 
-      const projectContent = document.createElement('div');
-      projectContent.className = 'project-content';
+      const projectContent = document.createElement("div");
+      projectContent.className = "project-content";
 
-      const projectHeading = document.createElement('h2');
+      const projectHeading = document.createElement("h2");
       projectHeading.className = `project-heading`;
 
       content.append(projectHeading, projectContent);
@@ -25,36 +27,79 @@ export function projectDisplay() {
           for (let j = 0; j < projects[i].tasks.length; j++) {
             const indexNum = j;
 
-            const projectDiv = document.createElement("div");
-            projectDiv.className = projects[i].tasks[j].title;
-            projectDiv.textContent = projects[i].tasks[j].title;
+            const projectCard = document.createElement("div");
+            projectCard.className = `project-card`;
 
-            projectDiv.append(
-              removeProjectTask(i, indexNum, projectDiv, projectContent)
+            const projectCardTitle = document.createElement("h3");
+            projectCardTitle.textContent = projects[i].tasks[j].title;
+
+            const projectCardDescription = document.createElement("p");
+            projectCardDescription.textContent =
+              projects[i].tasks[j].description;
+            projectCardDescription.style.display = "none";
+
+            const projectCardPriority = document.createElement('p');
+            projectCardPriority.textContent = `Priority - ${projects[i].tasks[j].priority}`;
+            projectCardPriority.style.display = 'none';
+
+            if(projects[i].tasks[j].priority === `Low`) {
+              projectCard.style.backgroundColor = 'green';
+            } else if (projects[i].tasks[j].priority === `Medium`) {
+              projectCard.style.backgroundColor = 'yellow';
+            }else if (projects[i].tasks[j].priority === `High`) {
+              projectCard.style.backgroundColor = 'red';
+            }
+
+            const projectCardDueDate = document.createElement("p");
+            projectCardDueDate.textContent = `Due Date - ${projects[i].tasks[j].dueDate}`;
+
+            projectCard.append(
+              projectCardTitle,
+              projectCardDescription,
+              projectCardDueDate,
+              projectCardPriority,
+              removeProjectTask(i, indexNum, projectCard),
+              showMore(projectCardDescription, projectCardPriority)
             );
 
-            projectContent.append(projectDiv);
+            projectContent.append(projectCard);
           }
         }
       }
-      return `${project.textContent.split("Delete")[0]}`;
     });
   });
 }
 
-function removeProjectTask(i, indexNum, projectDiv, projectContent) {
+function removeProjectTask(i, num, card) {
+
+  const projectContent = document.querySelector('.project-content');
   const removeProjectTaskBtn = document.createElement("button");
-  removeProjectTaskBtn.textContent = `Remove`;
+  removeProjectTaskBtn.innerHTML = `<img src = ${Icon} alt="delete" width="15px"/>`;
   removeProjectTaskBtn.className = `remove-project-task-btn`;
 
   removeProjectTaskBtn.addEventListener("click", () => {
-    projectContent.removeChild(projectDiv);
-    projects[i].tasks.splice(indexNum, 1);
+    projectContent.removeChild(card);
+    projects[i].tasks.splice(num, 1);
     console.warn(projects);
   });
   return removeProjectTaskBtn;
 }
 
-export function projectKey() {
-  console.log(projectDisplay());
+function showMore(description, priority) {
+  const showMoreBtn = document.createElement("button");
+  showMoreBtn.className = `show-more-btn`;
+  showMoreBtn.textContent = `Show More`;
+
+  showMoreBtn.addEventListener("click", () => {
+    if (showMoreBtn.textContent === `Show More`) {
+      description.style.display = "block";
+      priority.style.display = `block`;
+      showMoreBtn.textContent = `Show Less`;
+    } else if (showMoreBtn.textContent === `Show Less`) {
+      description.style.display = "none";
+      priority.style.display = 'none';
+      showMoreBtn.textContent = `Show More`;
+    }
+  });
+  return showMoreBtn;
 }

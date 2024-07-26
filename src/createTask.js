@@ -1,14 +1,10 @@
-
-
-export function createTask(title, description, dueDate) {
-    const task = {
-        title,
-        description,
-        dueDate
-    }
-    return task;
-   
+export function createTask(title, description, dueDate, priority, status) {
+  const task = {
+    title,
+    description,
+    dueDate,
+    priority,
+    status,
+  };
+  return task;
 }
-
-
-

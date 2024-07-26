@@ -1,4 +1,5 @@
 import { projects } from "./allProjects";
+import Icon from './icons/delete-btn.png'
 
 export function viewAllTasks() {
   const content = document.querySelector(".content");
@@ -33,7 +34,7 @@ function task(tasksList) {
 
       const removeBtn = document.createElement("button");
       removeBtn.classList = `remove-btn`;
-      removeBtn.textContent = `Remove`;
+      removeBtn.innerHTML = `<img src = ${Icon} alt="delete" width="15px"/>`;
       removeBtn.addEventListener("click", () => {
         tasksList.removeChild(card);
         projects[i].tasks.splice(indexNum, 1);

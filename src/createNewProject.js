@@ -1,4 +1,4 @@
-import { createProjectNameInput } from "./createNewProjectFormElements.js";
+import { createProjectNameInput, createCloseBtn } from "./createNewProjectFormElements.js";
 import { createAddProjectButton } from "./createAddProjectButton.js";
 
 export function createNewProject() {
@@ -21,5 +21,5 @@ export function createNewProject() {
 export function createProjectForm() {
   const PROJECT_FORM = document.querySelector(".project-form");
 
-  PROJECT_FORM.append(createProjectNameInput(), createAddProjectButton());
+  PROJECT_FORM.append(createProjectNameInput(), createAddProjectButton(), createCloseBtn());
 }
