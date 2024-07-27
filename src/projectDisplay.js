@@ -1,6 +1,6 @@
 import { projects } from "./allProjects";
 import { createEditOKButton } from "./createEditOKButton";
-import { createTitle, createCloseBtn, createDescription, createDueDate, createPriority } from "./createTaskFormElements";
+import { createTitle, createCloseBtn, createDescription, createDueDate, createPriority, createCheckbox } from "./createTaskFormElements";
 import Icon from './icons/delete-btn.png';
 import { priorities } from "./priorities";
 import { viewAllTasks } from "./viewAllTasks";
@@ -58,6 +58,13 @@ export function projectDisplay() {
             const projectCardDueDate = document.createElement("p");
             projectCardDueDate.textContent = `Due Date - ${projects[i].tasks[j].dueDate}`;
 
+            if (projects[i].tasks[j].status === "completed") {
+              projectCardTitle.style.textDecoration = "line-through";
+              projectCardDescription.style.textDecoration = "line-through";
+              projectCardDueDate.style.textDecoration = "line-through";
+              projectCardPriority.style.textDecoration = "line-through";
+            }
+
             const projectCardBtn = createEditBtn(i, j);
 
             projectCard.append(
@@ -100,7 +107,7 @@ function createEditBtn(i, j) {
 
     editMenu.append(editForm);
 
-    editForm.append(createTitle(), createDescription(), createDueDate(), createPriority(priorities),createEditOKButton(i, j), createCloseBtn() );
+    editForm.append(createTitle(), createDescription(), createDueDate(), createPriority(priorities),createCheckbox(),createEditOKButton(i, j), createCloseBtn() );
   })
 
   return editBtn;

@@ -1,4 +1,4 @@
-import { createTitle , createDescription, createDueDate, createOption, createCloseBtn, createPriority} from "./createTaskFormElements.js";
+import { createTitle , createDescription, createDueDate, createOption, createCloseBtn, createPriority, createCheckbox} from "./createTaskFormElements.js";
 import { createAddButton } from "./createAddButton.js";
 import { priorities } from "./priorities.js";
 
@@ -24,5 +24,5 @@ export function addTasks() {
 export function createTaskForm() {
   const TASK_FORM = document.querySelector(".task-form");
 
-  TASK_FORM.append(createTitle(), createDescription(), createDueDate(), createOption(),createPriority(priorities), createAddButton(), createCloseBtn());
+  TASK_FORM.append(createTitle(), createDescription(), createDueDate(), createOption(),createPriority(priorities),createCheckbox(), createAddButton(), createCloseBtn());
 }

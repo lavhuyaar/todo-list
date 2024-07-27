@@ -30,7 +30,9 @@ function addButton(button) {
               new Date(document.querySelector("#due-date").value),
               "dd-MM-yyyy"
             ),
-            document.querySelector("#priorities-select").value
+            document.querySelector("#priorities-select").value,
+            checkBox()
+            
           )
         );
       }
@@ -43,4 +45,13 @@ function addButton(button) {
 
     viewAllTasks();
   });
+}
+
+
+export function checkBox() {
+  if(document.querySelector("#checkbox").checked) {
+    return document.querySelector("#checkbox").value
+  } else {
+    return 'pending';
+  }
 }

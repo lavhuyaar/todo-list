@@ -1,6 +1,7 @@
 import { projects } from "./allProjects";
 import { format } from "date-fns";
 import { viewAllTasks } from "./viewAllTasks";
+import { checkBox } from "./createAddButton";
 
 export function createEditOKButton(i, j) {
   const editOKBtn = document.createElement("button");
@@ -24,6 +25,8 @@ function okBtn(button, i, j) {
       new Date(document.querySelector("#due-date").value),
       "dd-MM-yyyy"
     );
+
+    projects[i].tasks[j].status = checkBox();
     viewAllTasks();
 
     const editPage = document.querySelector(".edit-page");

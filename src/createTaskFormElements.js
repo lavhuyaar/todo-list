@@ -101,3 +101,22 @@ export function createPriority(priorities) {
 
   return prioritiesDiv;
 }
+
+export function createCheckbox() {
+  const checkBoxDiv = document.createElement('div');
+
+  const checkBoxLabel = document.createElement('label');
+  checkBoxLabel.textContent = 'Task completed?'
+  checkBoxLabel.setAttribute('for', 'complete');
+  
+
+
+  const checkBox = document.createElement('input');
+  checkBox.type = 'checkbox';
+  checkBox.id = 'checkbox';
+  checkBox.value = 'completed';
+
+  checkBoxDiv.append(checkBoxLabel, checkBox);
+
+  return checkBoxDiv;
+}
