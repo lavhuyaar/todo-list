@@ -1,6 +1,7 @@
 import { createProject } from "./createProject";
 import { projectCardsDisplay } from "./projectCardsDisplay";
 import Icon from "./icons/delete-btn.png";
+import { viewAllTasks } from "./viewAllTasks";
 
 //Projects array which stores all projects and their respective tasks
 export const projects = [];
@@ -41,7 +42,10 @@ export function createDeleteButton(indexNum, project) {
       projectGrid.removeChild(project);
       projects.splice(indexNum, 1);
       console.warn(projects);
-    } else alert("only one project left");
+    } else {
+      alert("Only one project left.");
+      viewAllTasks();
+    }
   });
   return deleteProjectBtn;
 }

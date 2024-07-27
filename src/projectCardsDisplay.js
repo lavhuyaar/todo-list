@@ -34,8 +34,6 @@ export function projectCardsDisplay() {
           for (let j = 0; j < projects[i].tasks.length; j++) {
             const indexNum = j;
 
-            console.log(project.textContent.split("Delete")[0] === projects[i].name)
-
             const projectCard = document.createElement("div");
             projectCard.className = `project-card`;
 
@@ -71,10 +69,31 @@ export function projectCardsDisplay() {
               projectCardPriority.style.textDecoration = "line-through";
             }
 
+            const projectCheckedBox = document.createElement("input");
+            projectCheckedBox.type = "checkbox";
+            projectCheckedBox.id = "myCheckBox";
+
+            if (projects[i].tasks[j].status === "completed") {
+              projectCheckedBox.checked = true;
+            } else if (projects[i].tasks[j].status === "pending") {
+              projectCheckedBox.checked = false;
+            }
+
+            projectCheckedBox.addEventListener("change", () => {
+              if (document.getElementById("myCheckBox").checked) {
+                projects[i].tasks[j].status = "completed";
+                viewAllTasks();
+              } else if (!document.getElementById("myCheckBox").checked) {
+                projects[i].tasks[j].status = "pending";
+                viewAllTasks();
+              }
+            });
+
             const projectCardBtn = createEditButton(i, j);
 
             projectCard.append(
               projectCardTitle,
+              projectCheckedBox,
               projectCardDescription,
               projectCardDueDate,
               projectCardPriority,
