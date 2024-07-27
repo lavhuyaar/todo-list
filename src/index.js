@@ -1,12 +1,11 @@
 import "./style.css";
-import { addTasks } from "./taskForm.js";
+import { addTask } from "./taskFormBox.js";
 import { viewAllTasks } from "./viewAllTasks.js";
-import { createNewProject } from "./createNewProject.js";
-import { projectDisplay } from "./projectDisplay.js";
+import { createNewProjectFormBox } from "./newProjectFormBox.js";
 
 const addTaskBtn = document.querySelector('.add-task-btn');
 addTaskBtn.addEventListener('click', ()=> {
-    addTasks();
+    addTask();
 });
 
 const viewTasksBtn = document.querySelector('.view-tasks-btn');
@@ -16,7 +15,7 @@ viewTasksBtn.addEventListener('click', ()=> {
 
 const createNewProjectBtn = document.querySelector('.create-project-btn');
 createNewProjectBtn.addEventListener('click', ()=> {
-    createNewProject();
+    createNewProjectFormBox();
 })
 
-projectDisplay();
+viewAllTasks();

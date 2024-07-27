@@ -1,6 +1,7 @@
 import { projects } from "./allProjects";
 import Icon from "./icons/delete-btn.png";
 
+//Displays all the tasks of projects
 export function viewAllTasks() {
   const content = document.querySelector(".content");
   content.innerHTML = ``;
@@ -28,6 +29,7 @@ function task(div) {
       const taskTitle = document.createElement("h3");
       taskTitle.textContent = projects[i].tasks[j].title;
 
+      //Changes task's color according to it's priority
       if (projects[i].tasks[j].priority === `Low`) {
         taskCard.style.backgroundColor = "green";
       } else if (projects[i].tasks[j].priority === `Medium`) {
@@ -55,6 +57,7 @@ function task(div) {
   }
 }
 
+//Remove button in task card
 export function removeTaskBtn(i, index, card, div) {
   const removeBtn = document.createElement("button");
   removeBtn.classList = `remove-btn`;

@@ -1,67 +1,47 @@
 import { createProject } from "./createProject";
-import { projectDisplay } from "./projectDisplay";
-import Icon from './icons/delete-btn.png';
+import { projectCardsDisplay } from "./projectCardsDisplay";
+import Icon from "./icons/delete-btn.png";
 
-export const projects = [
-  {
-    name: "Default",
-    tasks: [],
-  },
-];
+//Projects array which stores all projects and their respective tasks
+export const projects = [];
 
-// projects[0].tasks.push(createTask("lav", "paper", "rock"));
-
-
-
-
-
+//Creates a project div at 'Projects' section of sidebar as well as creates linked project div at content
 export function allProjects() {
   const content = document.querySelector(".content");
   content.innerHTML = ``;
 
-
-  //Sidebar
+  //Pushes project to projects array
   projects.push(createProject(document.querySelector("#project-name").value));
-  console.warn(projects);
 
   const projectGrid = document.querySelector(".projects-grid");
   projectGrid.innerHTML = ``;
 
   for (let i = 0; i < projects.length; i++) {
     const indexNum = i;
-
     const project = document.createElement("div");
     project.className = `project`;
     project.textContent = projects[i].name;
+
     projectGrid.append(project);
-
-   
-    project.append( createDeleteButton(indexNum, project));
+    project.append(createDeleteButton(indexNum, project));
   }
-
-  projectDisplay();
+  projectCardsDisplay();
 }
 
+//Delete button assigned to projects at sidebar section which deletes the project
 export function createDeleteButton(indexNum, project) {
-
   const projectGrid = document.querySelector(".projects-grid");
-  
+
   const deleteProjectBtn = document.createElement("button");
-    deleteProjectBtn.innerHTML = `<img src = ${Icon} alt="delete" width="15px"/>`;
-    deleteProjectBtn.className = `delete-project-btn`;
+  deleteProjectBtn.textContent = `Delete`;
+  deleteProjectBtn.className = `delete-project-btn`;
 
-      deleteProjectBtn.addEventListener("click", () => {
-
-        if(projects.length > 1) {
-        projectGrid.removeChild(project);
-        projects.splice(indexNum, 1);
-        console.warn(projects);
-
-      } else (
-        alert('only one project left')
-      )
-      
-      });
-    
-    return deleteProjectBtn;
+  deleteProjectBtn.addEventListener("click", () => {
+    if (projects.length > 1) {
+      projectGrid.removeChild(project);
+      projects.splice(indexNum, 1);
+      console.warn(projects);
+    } else alert("only one project left");
+  });
+  return deleteProjectBtn;
 }
