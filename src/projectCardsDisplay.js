@@ -11,6 +11,7 @@ import {
 import Icon from "./icons/delete-btn.png";
 import { priorities } from "./priorities";
 import { viewAllTasks } from "./viewAllTasks";
+import { format } from "date-fns";
 
 //Displays all project cards of the respective project in content div
 export function projectCardsDisplay() {
@@ -49,45 +50,23 @@ export function projectCardsDisplay() {
             projectCardPriority.textContent = `Priority - ${projects[i].tasks[j].priority}`;
             projectCardPriority.style.display = "none";
 
-            //Adds color to card according to the priority
-            if (projects[i].tasks[j].priority === `Low`) {
-              projectCard.style.backgroundColor = "green";
-            } else if (projects[i].tasks[j].priority === `Medium`) {
-              projectCard.style.backgroundColor = "yellow";
-            } else if (projects[i].tasks[j].priority === `High`) {
-              projectCard.style.backgroundColor = "red";
-            }
-
             const projectCardDueDate = document.createElement("p");
             projectCardDueDate.textContent = `Due Date - ${projects[i].tasks[j].dueDate}`;
-
-            //Indicates whether a task/card is completed or not
-            if (projects[i].tasks[j].status === "completed") {
-              projectCardTitle.style.textDecoration = "line-through";
-              projectCardDescription.style.textDecoration = "line-through";
-              projectCardDueDate.style.textDecoration = "line-through";
-              projectCardPriority.style.textDecoration = "line-through";
-            }
 
             const projectCheckedBox = document.createElement("input");
             projectCheckedBox.type = "checkbox";
             projectCheckedBox.id = "myCheckBox";
 
-            if (projects[i].tasks[j].status === "completed") {
-              projectCheckedBox.checked = true;
-            } else if (projects[i].tasks[j].status === "pending") {
-              projectCheckedBox.checked = false;
-            }
-
-            projectCheckedBox.addEventListener("change", () => {
-              if (document.getElementById("myCheckBox").checked) {
-                projects[i].tasks[j].status = "completed";
-                viewAllTasks();
-              } else if (!document.getElementById("myCheckBox").checked) {
-                projects[i].tasks[j].status = "pending";
-                viewAllTasks();
-              }
-            });
+            priorityColorSet(i, j, projectCard);
+            taskCompletion(
+              projectCardTitle,
+              projectCardDescription,
+              projectCardDueDate,
+              projectCardPriority,
+              i,
+              j,
+              projectCheckedBox
+            );
 
             const projectCardBtn = createEditButton(i, j);
 
@@ -143,7 +122,9 @@ function createEditButton(i, j) {
       createCheckbox(),
       createEditOKButton(i, j),
       createCloseBtn()
-    );
+    )
+    
+    editFormDefaultDetails(i, j);
   });
   return editBtn;
 }
@@ -194,4 +175,47 @@ function createEditTaskHeading() {
   editTaskHeading.className = `edit-task-heading`;
 
   return editTaskHeading;
+}
+
+//Adds color to card according to the priority
+function priorityColorSet(i, j, card) {
+  if (projects[i].tasks[j].priority === `Low`) {
+    card.style.backgroundColor = "green";
+  } else if (projects[i].tasks[j].priority === `Medium`) {
+    card.style.backgroundColor = "yellow";
+  } else if (projects[i].tasks[j].priority === `High`) {
+    card.style.backgroundColor = "red";
+  }
+}
+
+//Indicates whether a task/card is completed or not
+function taskCompletion(title, description, dueDate, priority, i, j, checkBox) {
+  if (projects[i].tasks[j].status === "completed") {
+    title.style.textDecoration = "line-through";
+    description.style.textDecoration = "line-through";
+    dueDate.style.textDecoration = "line-through";
+    priority.style.textDecoration = "line-through";
+  }
+
+  if (projects[i].tasks[j].status === "completed") {
+    checkBox.checked = true;
+  } else if (projects[i].tasks[j].status === "pending") {
+    checkBox.checked = false;
+  }
+
+  checkBox.addEventListener("change", () => {
+    if (document.getElementById("myCheckBox").checked) {
+      projects[i].tasks[j].status = "completed";
+      viewAllTasks();
+    } else if (!document.getElementById("myCheckBox").checked) {
+      projects[i].tasks[j].status = "pending";
+      viewAllTasks();
+    }
+  });
+}
+
+//Fills edit form with already available details of respective div
+function editFormDefaultDetails(i, j) {
+  document.getElementById('title').value = projects[i].tasks[j].title;
+  document.getElementById('description').value = projects[i].tasks[j].description;
 }
