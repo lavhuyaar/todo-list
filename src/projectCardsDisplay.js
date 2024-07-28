@@ -64,7 +64,7 @@ export function projectCardsDisplay() {
 
             const projectCheckedBox = document.createElement("input");
             projectCheckedBox.type = "checkbox";
-            projectCheckedBox.id = "myCheckBox";
+            projectCheckedBox.className = "myCheckBox";
 
             priorityColorSet(i, j, projectCard);
             taskCompletion(

@@ -367,7 +367,7 @@ header {
 }
 
 /*Checkbox*/
-#myCheckBox {
+.myCheckBox {
   justify-content: end;
   width: 40px;
   cursor: pointer;
