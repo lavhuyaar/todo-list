@@ -1,107 +1,460 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-color: grey;
-    width: 100%;
-    height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-header {
-    height: 50px;
-    width: 100%;
-    display: flex;
-    background-color: bisque;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.3rem;
-
-}
-
-.container {
-    display: flex;
-    width: 100%;
-    height: calc(100% - 50px);
-}
-
-.sidebar{
-    width: 15%;
-    background-color: brown;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.projects {
-    display: flex;
-    flex-direction: column;
-}
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
-.button-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
+  width: 100%;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #8b8b8b;
 }
 
 button {
-    width: 100px;
-    height: 20px;
+  background-color: #9171f8;
+  border: none;
+  border-radius: 12px;
+  padding: 2px 0px;
+  cursor: pointer;
 }
 
-.task-page, .project-page {
-    width: 100%;
-    height: 100%;
-    display: none;
-    position: absolute;
+/*Header*/
+header {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  background-color: #121212;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  color: #8b8b8b;
 }
 
-.task-menu, .project-menu, .edit-menu {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.container {
+  display: flex;
+  width: 100%;
+  height: calc(100% - 50px);
 }
 
+/*Sidebar*/
+.sidebar {
+  width: 280px;
+  background-color: #121212;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/*All buttons of sidebar*/
+.button-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.button-list > button {
+  width: 80%;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 10px 5px;
+  cursor: pointer;
+}
+
+/*Projects section of sidebar*/
+.projects {
+  width: calc(100% - 20px);
+  margin-top: 20px;
+  background-color: #2f2b3a;
+  padding: 15px 0px 15px 20px;
+  color: #ba9ffb;
+}
+
+/*Heading*/
+.projects > h3 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  text-decoration: underline;
+  padding-right: 15px;
+  margin-bottom: 15px;
+}
+
+/*Sidebar projects' grid*/
+.projects-grid {
+  display: none;
+  grid-template-columns: 1fr;
+  font-weight: 700;
+  gap: 15px;
+  font-size: 1.4rem;
+}
+
+/*Individual project of projects section*/
+.project {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/*Delete button of project*/
+.project > button {
+  padding: 2px 8px;
+}
+
+/*Delete icon*/
+.project > button > img {
+  width: 2rem;
+}
+
+/*Task-project bg page*/
+.task-page,
+.project-page {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: absolute;
+}
+
+.task-menu,
+.project-menu,
+.edit-menu {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Add task input form*/
 .task-form {
-    height: 500px;
-    width: 500px;
-    background-color: red;
+  width: 350px;
+  display: grid;
+  background-color: #121212;
+  color: #8b8b8b;
+  gap: 20px;
+  padding: 20px;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
-.task-list {
-    width: 100%;
-    height: 100%;
+/*Heading of task input form*/
+.task-form > h2 {
+  justify-self: center;
+  font-weight: 800;
+  font-size: 2rem;
 }
 
+/*All divs of task input form*/
+.task-form > div {
+  display: grid;
+  width: 80%;
+  font-weight: 600;
+  justify-self: center;
+  gap: 5px;
+}
+
+/*All inputs, select, options, taskarea of task input form*/
+.task-form > div > input,
+.task-form > div > select,
+.task-form > div > textarea,
+.task-form > div > select > option {
+  padding: 5px;
+}
+
+/*Description input*/
+#description {
+  height: 100px;
+}
+
+/*Checkbox div*/
+.task-form > div + div + div + div + div + div {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+
+/*Checkbox*/
+.task-form > #checkbox {
+  justify-self: end;
+  width: 20px;
+}
+
+/*Buttons of task input form*/
+.task-btns > button {
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 10px 5px;
+  margin-bottom: 5px;
+}
+
+/*Hover*/
+.button-list > button:hover,
+.task-btns > button:hover,
+.show-more-btn:hover,
+.edit-btn:hover,
+.project-form-buttons > button:hover {
+  background-color: transparent;
+  border: 5px solid #9171f8;
+  color: #8b8b8b;
+}
+
+/*Content div*/
 .content {
-    width: 85%;
-
+  width: calc(100% - 280px);
+  background-color: #282828;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-
+/*Project input form*/
 .project-form {
-    background-color: green;
-    height: 500px;
-    width: 500px;
+  width: 350px;
+  display: grid;
+  background-color: #121212;
+  color: #8b8b8b;
+  gap: 20px;
+  padding: 20px;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
+/*Heading*/
+.project-form > h2 {
+  justify-self: center;
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+/*Project name input form*/
+.project-form > div > input {
+  padding: 5px;
+}
+
+.project-form > div {
+  display: grid;
+  width: 80%;
+  font-weight: 600;
+  justify-self: center;
+  gap: 5px;
+}
+
+/*Buttons of project input form*/
+.project-form-buttons {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+
+.project-form-buttons > button {
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 10px 5px;
+  margin-bottom: 5px;
+}
+
+/*All tasks grid*/
+.task-list {
+  margin: 20px 0px;
+  width: 95%;
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: center;
+  gap: 20px;
+}
+
+/*Heading of content div*/
+.tasks-heading,
+.project-heading {
+  width: 95%;
+  font-size: 3rem;
+  padding: 10px 0px 0px 10px;
+  color: #ba9ffb;
+}
+
+/*Cards when all tasks button pressed*/
+.task-card {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  padding: 10px;
+  font-size: 1.5rem;
+  gap: 10px;
+  align-items: center;
+}
+
+/*Task title*/
+.task-card > h3 {
+  font-weight: 700;
+}
+
+/*Task due-date*/
+.task-card > p {
+  font-size: 1.2rem;
+}
+
+/*Delete button of task card*/
+.task-card > button {
+  justify-self: end;
+  padding: 8px;
+}
+
+.remove-btn > img {
+  width: 2rem;
+}
+
+/*Grid of project tasks cards*/
 .project-content {
-    height: 100%;
-    width: 100%;
+  margin: 20px 0px;
+  width: 95%;
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: center;
+  gap: 20px;
 }
 
+/*Project task card*/
+.project-card {
+  display: grid;
+  padding: 15px 40px;
+  font-size: 1.5rem;
+  gap: 10px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+/*Title*/
+.project-card > h3 {
+  font-weight: 700;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  align-self: center;
+}
+
+/*Description*/
+.card-description {
+  font-size: 1rem;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.card-description > p {
+  width: fit-content;
+  height: fit-content;
+}
+
+/*Due-date*/
+.card-due-date {
+  font-size: 1.2rem;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  align-self: center;
+  justify-self: center;
+}
+
+/*Priority*/
+.card-priority {
+  font-size: 1.2rem;
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  align-self: center;
+}
+
+/*Checkbox*/
+#myCheckBox {
+  justify-content: end;
+  width: 40px;
+}
+
+/*Show more-show less button*/
+.show-more-btn {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 10px 10px;
+  cursor: pointer;
+}
+
+/*Remove button of project task card*/
+.remove-project-task-btn {
+  grid-column: 3 / 4;
+  grid-row: 2/ 3;
+}
+
+.remove-project-task-btn > img {
+  width: 2rem;
+}
+
+/*Edit project task button*/
+.edit-btn {
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 10px 5px;
+  cursor: pointer;
+}
+
+/*Edit input form*/
 .edit-form {
-    background-color: khaki;
-    height: 500px;
-    width: 500px;
+  width: 350px;
+  display: grid;
+  background-color: #121212;
+  color: #8b8b8b;
+  gap: 20px;
+  padding: 20px;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/*All inputs, select, options, taskarea of edit input form*/
+.edit-form > div > input,
+.edit-form > div > select,
+.edit-form > div > textarea,
+.edit-form > div > select > option {
+  padding: 5px;
+}
+
+/*Heading*/
+.edit-form > h2 {
+  justify-self: center;
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+/*All divs of heading input form*/
+.edit-form > div {
+  display: grid;
+  width: 80%;
+  font-weight: 600;
+  justify-self: center;
+  gap: 5px;
+}
+
+/*Checkbox div of edit input form*/
+.edit-form > div + div + div + div + div {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+
+/*Checkbox*/
+.edit-form > #checkbox {
+  justify-self: end;
+  width: 20px;
+}
+
+/*Buttons of edit form input*/
+.edit.btns {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+
+.edit-btns > button {
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 10px 5px;
+  margin-bottom: 5px;
 }
