@@ -211,10 +211,10 @@ function taskCompletion(title, description, dueDate, priority, i, j, checkBox) {
   }
 
   checkBox.addEventListener("change", () => {
-    if (document.getElementById("myCheckBox").checked) {
+    if (checkBox.checked) {
       projects[i].tasks[j].status = "completed";
       viewAllTasks();
-    } else if (!document.getElementById("myCheckBox").checked) {
+    } else if (!checkBox.checked) {
       projects[i].tasks[j].status = "pending";
       viewAllTasks();
     }

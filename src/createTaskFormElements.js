@@ -60,7 +60,7 @@ export function createProjectOption() {
 
   const projectOptionLabel = document.createElement("label");
   projectOptionLabel.textContent = `Add task in`;
-  projectOptionLabel.setAttribute("for", "projects-options");
+  projectOptionLabel.setAttribute("for", "project-options");
 
   for (let i = 0; i < projects.length; i++) {
     const option = document.createElement("option");
@@ -112,12 +112,11 @@ export function createCheckbox() {
 
   const checkBoxLabel = document.createElement("label");
   checkBoxLabel.textContent = "Task completed?";
-  checkBoxLabel.setAttribute("for", "complete");
+  checkBoxLabel.setAttribute("for", "checkbox");
 
   const checkBox = document.createElement("input");
   checkBox.type = "checkbox";
   checkBox.id = "checkbox";
-  checkBox.value = "completed";
 
   checkBoxDiv.append(checkBoxLabel, checkBox);
 
