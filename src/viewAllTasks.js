@@ -31,15 +31,15 @@ function task(div) {
 
       //Changes task's color according to it's priority
       if (projects[i].tasks[j].priority === `Low`) {
-        taskCard.style.backgroundColor = "green";
+        taskCard.style.backgroundColor = "#2f3a2e";
       } else if (projects[i].tasks[j].priority === `Medium`) {
-        taskCard.style.backgroundColor = "yellow";
+        taskCard.style.backgroundColor = "#39382d";
       } else if (projects[i].tasks[j].priority === `High`) {
-        taskCard.style.backgroundColor = "red";
+        taskCard.style.backgroundColor = "#3c2d2a";
       }
 
       const taskCardDueDate = document.createElement("p");
-      taskCardDueDate.textContent = `Due Date - ${projects[i].tasks[j].dueDate}`;
+      taskCardDueDate.textContent = `${projects[i].tasks[j].dueDate}`;
 
       if (projects[i].tasks[j].status === "completed") {
         taskTitle.style.textDecoration = "line-through";
@@ -61,7 +61,7 @@ function task(div) {
 export function removeTaskBtn(i, index, card, div) {
   const removeBtn = document.createElement("button");
   removeBtn.classList = `remove-btn`;
-  removeBtn.innerHTML = `<img src = ${Icon} alt="delete" width="15px"/>`;
+  removeBtn.innerHTML = `<img src = ${Icon} alt="delete"/>`;
   removeBtn.addEventListener("click", () => {
     div.removeChild(card);
     projects[i].tasks.splice(index, 1);

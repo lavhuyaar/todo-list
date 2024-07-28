@@ -1,4 +1,5 @@
 import { projects } from "./allProjects";
+import { createAddButton } from "./createAddTaskButton";
 
 //Title input of add task form
 export function createTitleInput() {
@@ -21,8 +22,7 @@ export function createTitleInput() {
 export function createDescriptionInput() {
   const descriptionDiv = document.createElement("div");
 
-  const descriptionInput = document.createElement("input");
-  descriptionInput.type = "text";
+  const descriptionInput = document.createElement("textarea");
   descriptionInput.id = `description`;
 
   const descriptionLabel = document.createElement("label");
@@ -99,7 +99,6 @@ export function createPriority(priorities) {
   for (let i = 0; i < priorities.length; i++) {
     const option = document.createElement("option");
     option.textContent = priorities[i].priority;
-    option.style.backgroundColor = priorities[i].color;
     option.value = priorities[i].priority;
     select.add(option);
   }
@@ -132,4 +131,13 @@ export function createAddTaskHeading() {
   addTaskHeading.className = `add-task-heading`;
 
   return addTaskHeading;
+}
+
+export function createTaskButtons() {
+  const taskButtonsDiv = document.createElement("div");
+  taskButtonsDiv.className = "task-btns";
+
+  taskButtonsDiv.append(createAddButton(), createCloseBtn());
+
+  return taskButtonsDiv;
 }

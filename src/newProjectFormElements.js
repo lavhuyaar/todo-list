@@ -1,3 +1,5 @@
+import { createAddProjectButton } from "./createAddProjectButton";
+
 //Project name input in add new project form
 export function createProjectNameInput() {
   const projectNameDiv = document.createElement("div");
@@ -36,4 +38,13 @@ export function createNewProjectHeading() {
   projectHeading.className = `new-project-heading`;
 
   return projectHeading;
+}
+
+export function createProjectFormButtons() {
+  const projectFormButtons = document.createElement("div");
+  projectFormButtons.className = "project-form-buttons";
+
+  projectFormButtons.append(createAddProjectButton(), createCloseBtn());
+
+  return projectFormButtons;
 }

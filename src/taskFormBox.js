@@ -3,12 +3,11 @@ import {
   createDescriptionInput,
   createDueDateInput,
   createProjectOption,
-  createCloseBtn,
   createPriority,
   createCheckbox,
   createAddTaskHeading,
+  createTaskButtons,
 } from "./createTaskFormElements.js";
-import { createAddButton } from "./createAddTaskButton.js";
 import { priorities } from "./priorities.js";
 
 //Creates new task input form
@@ -40,7 +39,6 @@ export function createTaskForm() {
     createProjectOption(),
     createPriority(priorities),
     createCheckbox(),
-    createAddButton(),
-    createCloseBtn()
+    createTaskButtons()
   );
 }

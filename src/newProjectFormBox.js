@@ -2,6 +2,7 @@ import {
   createNewProjectHeading,
   createProjectNameInput,
   createCloseBtn,
+  createProjectFormButtons,
 } from "./newProjectFormElements.js";
 import { createAddProjectButton } from "./createAddProjectButton.js";
 
@@ -29,7 +30,6 @@ export function createProjectForm() {
   PROJECT_FORM.append(
     createNewProjectHeading(),
     createProjectNameInput(),
-    createAddProjectButton(),
-    createCloseBtn()
+    createProjectFormButtons()
   );
 }

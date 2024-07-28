@@ -2,6 +2,7 @@ import { projects } from "./allProjects";
 import { format } from "date-fns";
 import { viewAllTasks } from "./viewAllTasks";
 import { checkBox } from "./createAddTaskButton";
+import { createCloseBtn } from "./createTaskFormElements";
 
 //OK button in edit input form
 export function createEditOKButton(i, j) {
@@ -28,4 +29,13 @@ function okBtn(button, i, j) {
     const editPage = document.querySelector(".edit-page");
     editPage.style.display = "none";
   });
+}
+
+export function createEditFormButtons(i, j) {
+  const editButtons = document.createElement("div");
+  editButtons.className = "edit-btns";
+
+  editButtons.append(createEditOKButton(i, j), createCloseBtn());
+
+  return editButtons;
 }

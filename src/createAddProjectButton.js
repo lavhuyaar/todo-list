@@ -10,6 +10,15 @@ export function createAddProjectButton() {
   ADD_PROJECT_BTN.addEventListener("click", () => {
     if (document.querySelector("#project-name").value === ``) {
       alert("Project name missing");
+      viewAllTasks();
+    } else if (
+      document.querySelector("#project-name").value.length > 20 ||
+      document.querySelector("#project-name").value.length < 3
+    ) {
+      alert(
+        `Project's name is either too short or too long. (Minimum letters - 3, Maximum letters - 20)`
+      );
+      viewAllTasks();
     } else {
       allProjects();
       viewAllTasks();

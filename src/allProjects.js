@@ -16,6 +16,7 @@ export function allProjects() {
 
   const projectGrid = document.querySelector(".projects-grid");
   projectGrid.innerHTML = ``;
+  projectGrid.style.display = "grid";
 
   for (let i = 0; i < projects.length; i++) {
     const indexNum = i;
@@ -34,14 +35,15 @@ export function createDeleteButton(indexNum, project) {
   const projectGrid = document.querySelector(".projects-grid");
 
   const deleteProjectBtn = document.createElement("button");
-  deleteProjectBtn.textContent = `Delete`;
+  deleteProjectBtn.innerHTML = `<img src = ${Icon} alt="delete"/>`;
+  deleteProjectBtn.setAttribute("alt", "delete");
   deleteProjectBtn.className = `delete-project-btn`;
 
   deleteProjectBtn.addEventListener("click", () => {
     if (projects.length > 1) {
       projectGrid.removeChild(project);
       projects.splice(indexNum, 1);
-      console.warn(projects);
+      viewAllTasks();
     } else {
       alert("Only one project left.");
       viewAllTasks();

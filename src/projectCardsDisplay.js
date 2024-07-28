@@ -1,5 +1,8 @@
 import { projects } from "./allProjects";
-import { createEditOKButton } from "./createEditOKButton";
+import {
+  createEditFormButtons,
+  createEditOKButton,
+} from "./createEditOKButton";
 import {
   createTitleInput,
   createCloseBtn,
@@ -41,17 +44,23 @@ export function projectCardsDisplay() {
             const projectCardTitle = document.createElement("h3");
             projectCardTitle.textContent = projects[i].tasks[j].title;
 
-            const projectCardDescription = document.createElement("p");
-            projectCardDescription.textContent =
+            const projectCardDescription = document.createElement("div");
+            projectCardDescription.className = "card-description";
+
+            const projectCardDescriptionP = document.createElement("p");
+            projectCardDescriptionP.textContent =
               projects[i].tasks[j].description;
             projectCardDescription.style.display = "none";
+            projectCardDescription.append(projectCardDescriptionP);
 
             const projectCardPriority = document.createElement("p");
             projectCardPriority.textContent = `Priority - ${projects[i].tasks[j].priority}`;
             projectCardPriority.style.display = "none";
+            projectCardPriority.className = "card-priority";
 
             const projectCardDueDate = document.createElement("p");
-            projectCardDueDate.textContent = `Due Date - ${projects[i].tasks[j].dueDate}`;
+            projectCardDueDate.textContent = `${projects[i].tasks[j].dueDate}`;
+            projectCardDueDate.className = "card-due-date";
 
             const projectCheckedBox = document.createElement("input");
             projectCheckedBox.type = "checkbox";
@@ -120,10 +129,9 @@ function createEditButton(i, j) {
       createDueDateInput(),
       createPriority(priorities),
       createCheckbox(),
-      createEditOKButton(i, j),
-      createCloseBtn()
-    )
-    
+      createEditFormButtons(i, j)
+    );
+
     editFormDefaultDetails(i, j);
   });
   return editBtn;
@@ -137,7 +145,7 @@ function showMore(description, priority, button) {
 
   showMoreBtn.addEventListener("click", () => {
     if (showMoreBtn.textContent === `Show More`) {
-      description.style.display = "block";
+      description.style.display = "inline-block";
       priority.style.display = "block";
       button.style.display = "block";
       showMoreBtn.textContent = `Show Less`;
@@ -161,7 +169,6 @@ function removeProjectTask(i, num, card) {
   removeProjectTaskBtn.addEventListener("click", () => {
     projectContent.removeChild(card);
     projects[i].tasks.splice(num, 1);
-    console.warn(projects);
 
     viewAllTasks();
   });
@@ -180,11 +187,11 @@ function createEditTaskHeading() {
 //Adds color to card according to the priority
 function priorityColorSet(i, j, card) {
   if (projects[i].tasks[j].priority === `Low`) {
-    card.style.backgroundColor = "green";
+    card.style.backgroundColor = "#2f3a2e";
   } else if (projects[i].tasks[j].priority === `Medium`) {
-    card.style.backgroundColor = "yellow";
+    card.style.backgroundColor = "#39382d";
   } else if (projects[i].tasks[j].priority === `High`) {
-    card.style.backgroundColor = "red";
+    card.style.backgroundColor = "#3c2d2a";
   }
 }
 
@@ -216,6 +223,7 @@ function taskCompletion(title, description, dueDate, priority, i, j, checkBox) {
 
 //Fills edit form with already available details of respective div
 function editFormDefaultDetails(i, j) {
-  document.getElementById('title').value = projects[i].tasks[j].title;
-  document.getElementById('description').value = projects[i].tasks[j].description;
+  document.getElementById("title").value = projects[i].tasks[j].title;
+  document.getElementById("description").value =
+    projects[i].tasks[j].description;
 }
