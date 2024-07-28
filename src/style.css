@@ -89,6 +89,7 @@ header {
   font-weight: 700;
   gap: 15px;
   font-size: 1.4rem;
+  cursor: pointer;
 }
 
 /*Individual project of projects section*/
@@ -180,6 +181,7 @@ header {
 .task-form > #checkbox {
   justify-self: end;
   width: 20px;
+  cursor: pointer;
 }
 
 /*Buttons of task input form*/
@@ -195,7 +197,9 @@ header {
 .task-btns > button:hover,
 .show-more-btn:hover,
 .edit-btn:hover,
-.project-form-buttons > button:hover {
+.project-form-buttons > button:hover,
+.edit-ok-btn:hover,
+.close-btn:hover {
   background-color: transparent;
   border: 5px solid #9171f8;
   color: #8b8b8b;
@@ -366,6 +370,7 @@ header {
 #myCheckBox {
   justify-content: end;
   width: 40px;
+  cursor: pointer;
 }
 
 /*Show more-show less button*/
@@ -443,6 +448,7 @@ header {
 .edit-form > #checkbox {
   justify-self: end;
   width: 20px;
+  cursor: pointer;
 }
 
 /*Buttons of edit form input*/
