@@ -10,6 +10,7 @@ import {
 import Icon from "./icons/delete-btn.png";
 import { priorities } from "./priorities";
 import { viewAllTasks } from "./viewAllTasks";
+import { format } from "date-fns";
 
 //Displays all project cards of the respective project in content div
 export function projectCardsDisplay() {
@@ -222,9 +223,21 @@ function taskCompletion(title, description, dueDate, priority, i, j, checkBox) {
   });
 }
 
-//Fills edit form with already available details of respective div
+//Fills edit form with already available details of respective project card
 function editFormDefaultDetails(i, j) {
   document.getElementById("title").value = projects[i].tasks[j].title;
   document.getElementById("description").value =
     projects[i].tasks[j].description;
+  const selectedOption = projects[i].tasks[j].priority;
+  const select = document.getElementById("priorities-select").options;
+  for (let i = 0; i < select.length; i++) {
+    if (select[i].textContent === selectedOption) {
+      select[i].selected = true;
+    }
+  }
+  if (projects[i].tasks[j].status === "completed") {
+    document.getElementById("checkbox").checked = true;
+  } else if (projects[i].tasks[j].status === "pending") {
+    document.getElementById("checkbox").checked = false;
+  }
 }
