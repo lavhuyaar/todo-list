@@ -1,5 +1,7 @@
 import { allProjects } from "./allProjects";
 import { viewAllTasks } from "./viewAllTasks";
+import { projects } from "./allProjects";
+import { createProject } from "./createProject";
 
 //"Create" button in new project input form
 export function createAddProjectButton() {
@@ -20,6 +22,12 @@ export function createAddProjectButton() {
       );
       viewAllTasks();
     } else {
+      //Pushes project to projects array
+      projects.push(
+        createProject(document.querySelector("#project-name").value)
+      );
+      localStorage.setItem("projects", JSON.stringify(projects));
+
       allProjects();
       viewAllTasks();
     }

@@ -1,18 +1,14 @@
-import { createProject } from "./createProject";
 import { projectCardsDisplay } from "./projectCardsDisplay";
 import Icon from "./icons/delete-btn.png";
 import { viewAllTasks } from "./viewAllTasks";
 
 //Projects array which stores all projects and their respective tasks
-export const projects = [];
+export let projects = [];
 
 //Creates a project div at 'Projects' section of sidebar as well as creates linked project div at content
 export function allProjects() {
   const content = document.querySelector(".content");
   content.innerHTML = ``;
-
-  //Pushes project to projects array
-  projects.push(createProject(document.querySelector("#project-name").value));
 
   const projectGrid = document.querySelector(".projects-grid");
   projectGrid.innerHTML = ``;
@@ -27,6 +23,7 @@ export function allProjects() {
     projectGrid.append(project);
     project.append(createDeleteButton(indexNum, project));
   }
+
   projectCardsDisplay();
 }
 
@@ -44,6 +41,9 @@ export function createDeleteButton(indexNum, project) {
       projectGrid.removeChild(project);
       projects.splice(indexNum, 1);
       viewAllTasks();
+
+      //Adds projects array to the local storage
+      localStorage.setItem("projects", JSON.stringify(projects));
     } else {
       alert("Only one project left.");
       viewAllTasks();

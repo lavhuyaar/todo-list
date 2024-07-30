@@ -65,7 +65,7 @@ export function removeTaskBtn(i, index, card, div) {
   removeBtn.addEventListener("click", () => {
     div.removeChild(card);
     projects[i].tasks.splice(index, 1);
-    console.warn(projects);
+    localStorage.setItem("projects", JSON.stringify(projects));
   });
 
   return removeBtn;

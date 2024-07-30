@@ -1,11 +1,7 @@
 import { projects } from "./allProjects";
-import {
-  createEditFormButtons,
-  createEditOKButton,
-} from "./createEditOKButton";
+import { createEditFormButtons } from "./createEditOKButton";
 import {
   createTitleInput,
-  createCloseBtn,
   createDescriptionInput,
   createDueDateInput,
   createPriority,
@@ -14,7 +10,6 @@ import {
 import Icon from "./icons/delete-btn.png";
 import { priorities } from "./priorities";
 import { viewAllTasks } from "./viewAllTasks";
-import { format } from "date-fns";
 
 //Displays all project cards of the respective project in content div
 export function projectCardsDisplay() {
@@ -65,7 +60,7 @@ export function projectCardsDisplay() {
             const projectCheckedBox = document.createElement("input");
             projectCheckedBox.type = "checkbox";
             projectCheckedBox.className = "myCheckBox";
-            projectCheckedBox.id = `${projects[i].tasks[j].title}`
+            projectCheckedBox.id = `${projects[i].tasks[j].title}`;
 
             priorityColorSet(i, j, projectCard);
             taskCompletion(
@@ -172,6 +167,7 @@ function removeProjectTask(i, num, card) {
     projects[i].tasks.splice(num, 1);
 
     viewAllTasks();
+    localStorage.setItem("projects", JSON.stringify(projects));
   });
   return removeProjectTaskBtn;
 }
@@ -207,16 +203,20 @@ function taskCompletion(title, description, dueDate, priority, i, j, checkBox) {
 
   if (projects[i].tasks[j].status === "completed") {
     checkBox.checked = true;
+    localStorage.setItem("projects", JSON.stringify(projects));
   } else if (projects[i].tasks[j].status === "pending") {
     checkBox.checked = false;
+    localStorage.setItem("projects", JSON.stringify(projects));
   }
 
   checkBox.addEventListener("change", () => {
     if (checkBox.checked) {
       projects[i].tasks[j].status = "completed";
+      localStorage.setItem("projects", JSON.stringify(projects));
       viewAllTasks();
     } else if (!checkBox.checked) {
       projects[i].tasks[j].status = "pending";
+      localStorage.setItem("projects", JSON.stringify(projects));
       viewAllTasks();
     }
   });

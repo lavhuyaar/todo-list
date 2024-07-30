@@ -39,6 +39,7 @@ function addButton(button) {
               checkBox()
             )
           );
+          localStorage.setItem("projects", JSON.stringify(projects));
         }
       }
 
