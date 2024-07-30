@@ -52,7 +52,7 @@ function addButton(button) {
 
 export function checkBox() {
   if (document.querySelector("#checkbox").checked) {
-    return document.querySelector("#checkbox").value;
+    return "completed";
   } else {
     return "pending";
   }
