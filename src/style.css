@@ -268,6 +268,7 @@ header {
   grid-template-columns: 100%;
   justify-content: center;
   gap: 20px;
+  overflow: auto;
 }
 
 /*Heading of content div*/
